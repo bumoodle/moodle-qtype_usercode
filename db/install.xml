@@ -1,0 +1,27 @@
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="question/type/usercode/db" VERSION="20120212" COMMENT="XMLDB file for Moodle question/type/usercode"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="question_usercode" COMMENT="Options for Usercode questions">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="question"/>
+        <FIELD NAME="question" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" COMMENT="Foreign key references question.id." PREVIOUS="id" NEXT="init_code"/>
+        <FIELD NAME="init_code" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" COMMENT="Block of code which initializes the user system." PREVIOUS="question" NEXT="grading_code"/>
+        <FIELD NAME="grading_code" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" COMMENT="Block of code which grades the user based on the system state after their response, and possibly based on breakpoint variables" PREVIOUS="init_code" NEXT="blacklist"/>
+        <FIELD NAME="blacklist" TYPE="text" LENGTH="medium" NOTNULL="false" SEQUENCE="false" COMMENT="Blacklist, which is passed to the user code" PREVIOUS="grading_code" NEXT="whitelist"/>
+        <FIELD NAME="whitelist" TYPE="text" LENGTH="medium" NOTNULL="false" SEQUENCE="false" PREVIOUS="blacklist" NEXT="requirelist"/>
+        <FIELD NAME="requirelist" TYPE="text" LENGTH="medium" NOTNULL="false" SEQUENCE="false" PREVIOUS="whitelist" NEXT="breakpoints"/>
+        <FIELD NAME="breakpoints" TYPE="text" LENGTH="medium" NOTNULL="false" SEQUENCE="false" PREVIOUS="requirelist" NEXT="system"/>
+        <FIELD NAME="system" TYPE="int" LENGTH="2" NOTNULL="false" UNSIGNED="false" DEFAULT="0" SEQUENCE="false" PREVIOUS="breakpoints" NEXT="runlimit"/>
+        <FIELD NAME="runlimit" TYPE="int" LENGTH="6" NOTNULL="false" UNSIGNED="true" DEFAULT="1000" SEQUENCE="false" PREVIOUS="system"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id" NEXT="question"/>
+        <KEY NAME="question" TYPE="foreign" FIELDS="question" REFTABLE="question" REFFIELDS="id" PREVIOUS="primary"/>
+      </KEYS>
+    </TABLE>
+  </TABLES>
+</XMLDB>
