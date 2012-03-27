@@ -1,0 +1,16 @@
+UserCode question type for Moodle 2.1+
+Allows safe execution of user code using the UserCode Simulator engine (https://github.com/ktemkin/Usercode-Simulator).
+
+Authored by Kyle Temkin, working for Binghamton University <http://www.binghamton.edu>
+
+Does not include the UserCode Simulator, which must be installed on the target server.
+
+To install Moodle 2.1+ using git, execute the following commands in the root of your Moodle install:
+
+    git clone git://github.com/ktemkin/moodle-qtype_usercode.git question/type/usercode
+    echo '/question/type/usercode' >> .git/info/exclude
+
+Or, extract the following zip in your_moodle_root/question/type/:
+
+    https://github.com/ktemkin/moodle-qtype_usercode/zipball/master
+
