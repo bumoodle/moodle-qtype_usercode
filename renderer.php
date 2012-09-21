@@ -44,8 +44,8 @@ class qtype_usercode_renderer extends qtype_renderer
         global $PAGE;
 
         //require the codemirror CSS files to be loaded as stylesheets
-        $PAGE->requires->css('/scripts/codemirror/codemirror.css');
-        $PAGE->requires->css('/scripts/codemirror/default.css');
+        $PAGE->requires->css('/question/type/scripted/scripts/codemirror/codemirror.css');
+        $PAGE->requires->css('/question/type/scripted/scripts/codemirror/default.css');
 
         //return an empty string, as we don't need to add any other HTML
         return '';
@@ -74,14 +74,14 @@ class qtype_usercode_renderer extends qtype_renderer
         $output .= html_writer::tag('textarea', htmlentities($response), array('name' => $name, 'id' => $name));
 
         //tell Moodle where to find the core codemirror code
-        $PAGE->requires->js('/scripts/codemirror/codemirror.js');
+        $PAGE->requires->js('/question/type/scripted/scripts/codemirror/codemirror.js');
 
         //and tell Moodle where to find the language definition
         switch($question->system)
         {
             //assume we're working with the HCS08
             default:
-                $PAGE->requires->js('/scripts/codemirror/hcs08.js');
+                $PAGE->requires->js('/question/type/scripted/scripts/codemirror/hcs08.js');
         }
 
         //insert a small block of initialization script, which will initialize codemirror
