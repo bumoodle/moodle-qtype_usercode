@@ -26,7 +26,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'qtype_usercode';
-$plugin->version   = 2011102700;
+$plugin->version   = 2011102701;
 
 $plugin->requires  = 2011102700;
 $plugin->dependencies = array
@@ -35,4 +35,4 @@ $plugin->dependencies = array
     );
 
 
-$plugin->maturity  = MATURITY_ALPHA;
+$plugin->maturity  = MATURITY_STABLE;
